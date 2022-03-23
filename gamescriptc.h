@@ -742,6 +742,9 @@ void * _gsCProcedureFbxBoneLookAt(void * gs, void * data, int argc, void ** args
 #include <math.h>
 #include <stdint.h>
 
+#define true 1
+#define false 0
+
 typedef unsigned char Bool;
 typedef double Number;
 typedef float Float;
