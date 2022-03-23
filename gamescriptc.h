@@ -742,6 +742,10 @@ void * _gsCProcedureFbxBoneLookAt(void * gs, void * data, int argc, void ** args
 #include <math.h>
 #include <stdint.h>
 
+#ifndef _len
+#define _len(x) ((Number)(sizeof(x) / sizeof((x)[0])))
+#endif
+
 #define true 1
 #define false 0
 
@@ -6992,6 +6996,14 @@ String strjoin(String a, String b) {
   c[alen + blen] = 0;
   dynamicArrayAppend(globalDynamicArrayPersistentNew("free"), _gsNumberFromVoidPointer(c));
   return c;
+}
+
+String strjoins(Number stringsCount, StringArray strings) {
+  String out = 0;
+  for (uint64_t i = 0, count = (uint64_t)stringsCount; i < count; i += 1) {
+    out = strjoin(out, strings[i]);
+  }
+  return out;
 }
 
 void framestart() {
