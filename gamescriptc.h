@@ -3689,7 +3689,7 @@ Bool glGetIntegerv(Number glenum, Number outPointer, Number outPointerBytesFirst
   return _gsBoolFromVoidPointer(_gsCProcedureGlGetIntegerv(0, 0, 0, args));
 }
 
-Number getUniqueNumber() /* -> Number uniqueNumberArray/ {
+Number getUniqueNumber() /* -> Number uniqueNumber */ {
   return _gsNumberFromVoidPointer(_gsCProcedureGetUniqueNumber(0, 0, 0, 0));
 }
 
