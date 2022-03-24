@@ -2278,7 +2278,7 @@ String numberWholePartToString(Number number) /* -> String string */ {
   return output;
 }
 
-Number stringCharToNumber(String string) /* -> Number charNumberArray/ {
+Number stringCharToNumber(String string) /* -> Number charNumber */ {
   void * args[] = {
     (void *)string,
   };
