@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void * _gsCProcedurePrintConsole(void * gs, void * data, int argc, void ** args);
 void * _gsCProcedurePrintDraw(void * gs, void * data, int argc, void ** args);
 void * _gsCProcedureWindowSetTitle(void * gs, void * data, int argc, void ** args);
@@ -739,8 +743,26 @@ void * _gsCProcedureFbxBoneSetScale(void * gs, void * data, int argc, void ** ar
 void * _gsCProcedureFbxBoneRotate(void * gs, void * data, int argc, void ** args);
 void * _gsCProcedureFbxBoneLookAt(void * gs, void * data, int argc, void ** args);
 
+#ifdef __cplusplus
+}
+#endif
+
 #include <math.h>
 #include <stdint.h>
+
+#if defined(_WIN32)
+  #if defined(__cplusplus)
+    #define cfn extern "C" __declspec(dllexport) void
+  #else
+    #define cfn __declspec(dllexport) void
+  #endif
+#else
+  #if defined(__cplusplus)
+    #define cfn extern "C" void
+  #else
+    #define cfn void
+  #endif
+#endif
 
 #ifndef _len
 #define _len(x) ((Number)(sizeof(x) / sizeof((x)[0])))
@@ -6979,9 +7001,17 @@ void fbxBoneLookAt(Number handle, Number x, Number y, Number z, Number upX, Numb
   _gsCProcedureFbxBoneLookAt(0, 0, 0, args);
 }
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 uint64_t strlen (String s);
 void *   malloc (uint64_t bytesCount);
 void     free   (void * pointer);
+
+#ifdef __cplusplus
+}
+#endif
 
 String strjoin(String a, String b) {
   uint64_t alen = a == 0 ? 0 : strlen(a);
